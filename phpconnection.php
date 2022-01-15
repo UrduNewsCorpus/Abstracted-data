@@ -1,4 +1,15 @@
 <?php
+$fn = $ln = $em = $ps= "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if(!empty($_POST['firstname'] && $_POST['lastname']&& $_POST['email'] && $_POST['password']))
+{
+$fn = $_POST['firstname'];
+$ln = $_POST['lastname'];
+$em = $_POST['email'];
+$ps = $_POST['password'];
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -6,32 +17,22 @@ $database = "customer";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-if(isset($_POST['submit']))
-{
-
-if(!empty($_POST['first']) && !empty($_POST['last']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm password']))
-{
-$fn = $_POST['first'];
-$ln = $_POST['last'];
-$em = $_POST['email'];
-$ps = $_POST['password'];
-$pc = $_POST['confirm password'];
-
-
-$sql = "INSERT INTO form(firstname,lastname,email,password,confirm password) values ('$fn','$ln', '$em', '$ps' , '$pc')";
-
-$run=mysqli_query($conn, $sql) or die(mysqli_error());
-if($run)
-{
-	echo "Record inserted successfully";
+if (!$conn) {
+    die("Connection failed!");
 }
-else
-{
-	echo "Data not insert";
+
+$sql = "INSERT INTO form(firstname, lastname, email, password) VALUES ('$fn','$ln','$em', '$ps')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "New record inserted";
+} else {
+    echo "Error: " . mysqli_error($conn);
 }
+mysqli_close($conn);
+
 }
 else {
-echo "All field Required!";
+echo "Provide data to register!";
 }
 
 }
