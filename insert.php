@@ -50,40 +50,40 @@
                 <form method="post" action="insert.php">
                     <h2 class="text-center mb-4 text-uppercase text-primary">Insert Data</h3>
                     <label for="exampleInputEmail1" class="form-label">AlifBy</label>
-                    <select class="form-select mb-3"" aria-label=" Default select example" name="alifBy">
+                    <select class="form-select mb-3" aria-label=" Default select example" name="alifby">
                         <option selected>----SelectAlifBy----</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
                     </select>
                     <label for="exampleInputEmail1" class="form-label">Words</label>
-                    <select class="form-select mb-3"" aria-label=" Default select example" name="Word">
+                    <select class="form-select mb-3"aria-label=" Default select example" name="word">
                         <option selected>Words</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="One">One</option>
+                        <option value="Two">Two</option>
+                        <option value="Three">Three</option>
                     </select>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Title</label>
-                        <input type="text" placeholder="title" class="form-control" id="exampleInputPassword1">
+                        <input type="text" placeholder="title" class="form-control" id="exampleInputPassword1" name="title">
                     </div>
                     <label for="exampleInputEmail1" class="form-label">Description</label>
                     <div class="form-floating mb-3">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
+                            style="height: 100px" name="description"></textarea>
                         <!-- <label for="floatingTextarea2">Comments</label> -->
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Sub Title</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1">
+                        <input type="text" class="form-control" id="exampleInputPassword1" name="subtitle">
                     </div>
                     <label for="exampleInputEmail1" class="form-label">Sub Description</label>
                     <div class="form-floating mb-2">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
+                            style="height: 100px" name="subdescription"></textarea>
                         <!-- <label for="floatingTextarea2">Comments</label> -->
                     </div>
-                    <button type="submit" class="btn btn-primary mt-4 px-5 py-2"  name="submit">Submit</button>
+                    <button type="submit" class="btn btn-primary mt-4 px-5 py-2" value="submit"  name="submit">Submit</button>
                 </form>
             </div>
         </div>
@@ -106,14 +106,6 @@
 
 -->
     <?php
-if (isset($_POST['submit'])) {
-@$alifBy = $_POST['alifby'];
-@$word = $_POST['word'];
-@$title= $_POST['title'];
-@$description = $_POST['description'];
-@$subtitle=$_POST['subtitle'];
-@$subdescription=$_POST['subdescription'];
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -122,6 +114,13 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
     die("Connection failed!");
 }
+if (isset($_POST['submit'])) {
+$alifBy = $_POST['alifby'];
+$word = $_POST['word'];
+$title= $_POST['title'];
+$description = $_POST['description'];
+$subtitle=$_POST['subtitle'];
+$subdescription=$_POST['subdescription'];
 $sql = "INSERT INTO insertwordnet(alifby, word, title, description,subtitle,subdescription) VALUES ('$alifBy','$word','$title', '$description','$subtitle','$subdescription')";
 
 if (mysqli_query($conn, $sql)) {
