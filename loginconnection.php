@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if(!(strcasecmp($match_em, $em) && strcmp($match_ps, $ps))) {
                 echo "Login Success!";
-            header("location:adminDashboard.php");   
+            header("location:insert.php");   
             } 
             else {
 
