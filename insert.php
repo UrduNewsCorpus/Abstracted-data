@@ -35,7 +35,7 @@
                                 <a class="nav-link text-white" href="#">Inset Data</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="updatedata.html">Update Data</a>
+                                <a class="nav-link text-white" href="updatedata.php">Update Data</a>
                             </li>
 
                         </ul>
